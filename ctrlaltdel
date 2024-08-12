@@ -1,0 +1,11 @@
+#!/bin/bash
+
+ACTION=$(echo -e "Lock Screen\nTask Manager\nLog Out\nShutdown" | rofi -dmenu -p "System Control")
+
+case $ACTION in
+    "Lock Screen") loginctl lock-session ;;
+    "Task Manager") plasma-systemmonitor ;;
+    "Log Out") qdbus org.kde.ksmserver /KSMServer logout 0 0 0 ;;
+    "Shutdown") shutdown now ;;
+esac
+
